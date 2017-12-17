@@ -71,11 +71,12 @@ class APITests(unittest.TestCase):
 
     def test_invalid_resource_endpoint_returns_error(self):
         self.add_tasks()
-        response = self.app.get('api/v1/tasks/209',
-        follow_redirects=True)
+        response = self.app.get('api/v1/tasks/209', follow_redirects=True)
         self.assertEquals(response.status_code, 404)
         self.assertEquals(response.mimetype, 'application/json')
         self.assertIn(b'Element does not exist', response.data)
+
+
 
 if __name__ == '__main__':
     unittest.main()
